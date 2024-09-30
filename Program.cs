@@ -12,11 +12,19 @@ namespace Blog
         {
             using (var context = new BlogDataContext())
             {
-                var tag = new Tag { Name = "ASP.NET",
-                Slug= "asp.net"};
+                //var tag = new Tag { Name = "ASP.NET",
+                //Slug= "asp.net"};
 
-                context.Tags.Add(tag);
+                //context.Tags.Add(tag);
+                //context.SaveChanges();
+
+                var tag = context.Tags.FirstOrDefault(x => x.Id == 1);
+                tag.Name = ".Net";
+                tag.Slug = "dotnet";
+
+                context.Update(tag);
                 context.SaveChanges();
+
             }
         }
     }
